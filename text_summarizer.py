@@ -18,12 +18,25 @@ def summarize_text(text):
         return f"Error:{response.text}"
 
 
-# Test Summarization
+# Interface
+interface = gr.Interface(
+    fn=summarize_text,
+    inputs=gr.Textbox(lines=10, label="Enter text to summarize"),
+    outputs="text",
+    title="AI Text Summarizer",
+    description="Summarize text using the DeepSeek AI model.",
+)
+
 if __name__ == "__main__":
-    sample_text = """
-    Artificial intelligence (AI) is intelligence demonstrated by machines, in contrast to the natural intelligence displayed by humans and animals.
-    Leading AI textbooks define the field as the study of "intelligent agents": any device that perceives its environment and takes actions
-    that maximize its chance of successfully achieving its goals.
-    """
-    print("Summary:")
-    print(summarize_text(sample_text))
+    interface.launch()
+
+
+# # Test Summarization
+# if __name__ == "__main__":
+#     sample_text = """
+#     Artificial intelligence (AI) is intelligence demonstrated by machines, in contrast to the natural intelligence displayed by humans and animals.
+#     Leading AI textbooks define the field as the study of "intelligent agents": any device that perceives its environment and takes actions
+#     that maximize its chance of successfully achieving its goals.
+#     """
+#     print("Summary:")
+#     print(summarize_text(sample_text))
